@@ -5,7 +5,7 @@ import Title from '../../styles/Title.module.css';
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-
+{/*
 const Community = ()=>{
     return (
         <div>
@@ -33,10 +33,9 @@ const Community = ()=>{
                     />
                 </div>
                 <button className={Title.submit_button}>입력</button>
-            </div> 
-           
-        </div>
+            </div>
+        </div>        
     )
 }
-
+ */}
 export default Community;

@@ -9,11 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-balloon": "^32.0.0",
-    "@ckeditor/ckeditor5-build-balloon-block": "^32.0.0",
     "@ckeditor/ckeditor5-build-classic": "^32.0.0",
-    "@ckeditor/ckeditor5-build-decoupled-document": "^32.0.0",
-    "@ckeditor/ckeditor5-build-inline": "^32.0.0",
     "@ckeditor/ckeditor5-react": "^4.0.0",
     "caver-js": "^1.6.8",
     "next": "12.1.0",
