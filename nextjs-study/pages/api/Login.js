@@ -5,13 +5,18 @@ const Login = () => {
 
     const CheckUnlocked = async () => 
     {
-        const ID = window.sessionStorage.getItem('ID');
-        // 지갑이 연결되어있다면 true, 아니라면 false를 리턴합니다.
-        const isUnlock = await window.klaytn._kaikas.isUnlocked();
-
-        if (ID !== null && isUnlock === true) {
-            SetAddress(ID);
+        if (typeof window !== 'undefined') 
+        {
+            const isID = window.sessionStorage.getItem('ID');
+            // 지갑이 연결되어있다면 true, 아니라면 false를 리턴합니다.
+            const isUnlock = await window.klaytn._kaikas.isUnlocked();
+    
+            if (isID !== null && isUnlock === true) 
+            {
+                SetAddress(isID);
+            }
         }
+
     }
 
     CheckUnlocked();
@@ -36,8 +41,8 @@ const Login = () => {
         if (window.klaytn !== 'undefined') {
             if (window.klaytn.isKaikas) {
                 //로그인/회원가입 진행                
-                const ID = window.sessionStorage.getItem('ID');
-                if (ID !== null) 
+                const LoginID = window.sessionStorage.getItem('ID');
+                if (LoginID !== null) 
                 {
                     //로그아웃
                     console.log("kaikas Out");
