@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
+//import {Modal} from './Modal';
+import LoginModal from './LoginModal';
 
 const Login = () => {
     const [Address, SetAddress] = useState('Login');
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+      setModalOpen(true);
+    };
+    const closeModal = () => {
+      setModalOpen(false);
+    };    
 
     const CheckUnlocked = async () => 
     {
-        if (typeof window !== 'undefined') 
+        if (typeof window !== 'undefined' && window.klaytn) 
         {
             const isID = window.sessionStorage.getItem('ID');
             // 지갑이 연결되어있다면 true, 아니라면 false를 리턴합니다.
@@ -38,7 +48,7 @@ const Login = () => {
 
     //설치되어있는 실제 카이카스 지갑이 로그인이 되어있는지를 확인
     const onClickKaikas = () => {
-        if (window.klaytn !== 'undefined') {
+        if (window.klaytn) {
             if (window.klaytn.isKaikas) {
                 //로그인/회원가입 진행                
                 const LoginID = window.sessionStorage.getItem('ID');
@@ -55,26 +65,36 @@ const Login = () => {
                     kaikasLogin();
                 }
             }
-            else {
-                alert("kaikas를 다운받아주세요");
-                //카이카스 설치 팝업 
-                const provider = window['klaytn']
-                console.log("Kaikas user detected");
-                console.log(provider);
-                /*
-                    //카이카스 계정이 변경 됐는지 확인하는 함수
-                    //기존에 계정과 다르다면, 로그아웃 처리를 해야한다
-                    klaytn.on('accountsChanged', function(accounts) {
-                    // Your code
-                    })                
-                */
-            }
         }
+        else {
+            //alert("kaikas를 다운받아주세요");
+            //카이카스 설치 팝업 
+            const provider = window['klaytn']
+            console.log("Kaikas user detected");
+            console.log(provider);
+
+            openModal();
+            console.log("Kaikas user detected");
+
+            /*
+                //카이카스 계정이 변경 됐는지 확인하는 함수
+                //기존에 계정과 다르다면, 로그아웃 처리를 해야한다
+                klaytn.on('accountsChanged', function(accounts) {
+                // Your code
+                })                
+
+                <button onClick={() => onClickKaikas()}>{Address}</button>
+            */
+        }        
     }
 
     return (
         <form>
-            <button onClick={() => onClickKaikas()}>{Address}</button>
+            <LoginModal onShow={modalOpen} onHide={()=>setModalOpen(false)}/>
+
+            <button onClick={( ) => setModalOpen(true)}>{Address}</button>
+
+            
         </form>
     )
 }

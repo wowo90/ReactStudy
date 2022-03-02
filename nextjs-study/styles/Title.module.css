@@ -1,6 +1,5 @@
 
 .MainBar {
-background-color:whitesmoke;
 color:cornflowerblue;
 font-size: 50px;
 font-weight: bold;
@@ -11,9 +10,12 @@ overflow: hidden;
 .MainMenu {
 float: left;
 color: dimgray;
-font-size: 20px;
+font-size: 15px;
 font-weight: bold;
-padding:5px;
+padding:7px;
+text-decoration: none;
+text-decoration-line: none;
+text-decoration-style:none;
 }
 
 .MainMenuRight {
