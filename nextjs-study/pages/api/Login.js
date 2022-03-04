@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 //import {Modal} from './Modal';
 import LoginModal from './LoginModal';
+//import AlretText from './AlretText';
 
 const Login = () => {
+    /*
     const [Address, SetAddress] = useState('Login');
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -67,36 +69,27 @@ const Login = () => {
             }
         }
         else {
-            //alert("kaikas를 다운받아주세요");
+            alert("kaikas를 다운받아주세요");
             //카이카스 설치 팝업 
             const provider = window['klaytn']
-            console.log("Kaikas user detected");
+            
             console.log(provider);
+            //AlretText("카이카스 오류", "카이카스가 설치되어 있지 않습니다.");
 
-            openModal();
-            console.log("Kaikas user detected");
-
-            /*
-                //카이카스 계정이 변경 됐는지 확인하는 함수
-                //기존에 계정과 다르다면, 로그아웃 처리를 해야한다
-                klaytn.on('accountsChanged', function(accounts) {
-                // Your code
-                })                
-
-                <button onClick={() => onClickKaikas()}>{Address}</button>
-            */
         }        
     }
-
+    */
     return (
-        <form>
-            <LoginModal onShow={modalOpen} onHide={()=>setModalOpen(false)}/>
-
-            <button onClick={( ) => setModalOpen(true)}>{Address}</button>
-
-            
+        <form> 
         </form>
     )
 }
 
 export default Login;
+
+/*
+<button onClick={() => onClickKaikas()}>{Address}</button>
+            <LoginModal onShow={modalOpen} onHide={()=>setModalOpen(false)}/>
+
+            <button onClick={( ) => setModalOpen(true)}>{Address}</button>
+*/

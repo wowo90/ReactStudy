@@ -9,29 +9,60 @@ import LoginModal from './api/LoginModal';
 const MainTitle = () => {
     const Name = "Level Zero";
     const [LoginOn, setLoginOn] = useState(false);
+    const [Address, SetAddress] = useState('Login');
+
+    const CheckUnlocked = async () => 
+    {
+        if (typeof window !== 'undefined' && window.klaytn) 
+        {
+            const isID = window.sessionStorage.getItem('ID');
+            // 지갑이 연결되어있다면 true, 아니라면 false를 리턴합니다.
+            const isUnlock = await window.klaytn._kaikas.isUnlocked();
+    
+            if (isID !== null && isUnlock === true) 
+            {
+                const firstText = isID.substring(0,8);
+                const LastText = isID.slice(-6);
+                const AllId = firstText + "......." + LastText;
+
+                SetAddress(AllId);
+            }
+            else
+            {
+                SetAddress('Login');
+            }
+        }
+
+    }
+
+    CheckUnlocked();
 
     return (
-        <>
+            <>
             <LoginModal
-                onShow={LoginOn}
+                show={LoginOn}
                 onHide={() => setLoginOn(false)}
             />
-
+            
             <div>
                 <Navbar bg="light" expand="xl">
                     <h4><Navbar.Brand href="/">{Name}</Navbar.Brand></h4>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse id="basic-navbar-nav" >
                         <Nav className="ml-auto">
                             <div className={Title.MainMenu}><Link href="/">Home</Link></div>
                             <div className={Title.MainMenu}><Link href="/Script/Community">Community</Link></div>
+                            <div className={Title.MainMenu}><Link href="/">NFT News</Link></div>
+                            <div className={Title.MainMenu}><Link href="/">NFT Event</Link></div>
                         </Nav>
                     </Navbar.Collapse>
                     <Nav className="mr-auto">
-                        <Button variant="primary" onClick={() => setLoginOn(true)} >Login</Button>
+                        <Button variant="primary" onClick={()=> setLoginOn(true)} >{Address}</Button>
                     </Nav>
                 </Navbar>
             </div>
+
+
         </>
     )
 }
