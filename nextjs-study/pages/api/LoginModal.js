@@ -91,7 +91,7 @@ const LoginModal = ({ show, onHide }) => {
         <Modal.Body style={{ display: "flex", justifyContent: "center"}}>
           <p>사용 중인 지갑이 없으신가요? 
             <a href="https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi?hl=ko"
-              target='_blank' className="alert-link">KaiKas 다운로드</a></p>
+              target='_blank' rel='noopener noreferrer' className="alert-link">KaiKas 다운로드</a></p>
           <br /><br /><br /><br /><br />
         </Modal.Body>
         {

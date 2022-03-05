@@ -1,5 +1,6 @@
 import Alert from 'react-bootstrap/Alert'
 import React, { useState } from 'react';
+import { Button } from "react-bootstrap";
 
 function AlertText() {
   const [show, setShow] = useState(true);
